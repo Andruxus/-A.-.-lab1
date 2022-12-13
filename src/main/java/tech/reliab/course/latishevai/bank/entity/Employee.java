@@ -1,7 +1,11 @@
 package tech.reliab.course.latishevai.bank.entity;
 
-import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.LocalDate;
+@Getter
+@Setter
 public class Employee extends Person {
     private Bank bank;
     private BankOffice bankOffice;
@@ -32,53 +36,5 @@ public class Employee extends Person {
                 "выдает кредиты: " + canIssueCredit + '\n' +
                 "размер зарплаты: " + salary + '\n' +
                 '}';
-    }
-
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
-
-    public BankOffice getBankOffice() {
-        return bankOffice;
-    }
-
-    public void setBankOffice(BankOffice bankOffice) {
-        this.bankOffice = bankOffice;
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
-
-    public Boolean getDistantWork() {
-        return distantWork;
-    }
-
-    public void setDistantWork(Boolean distantWork) {
-        this.distantWork = distantWork;
-    }
-
-    public Boolean getCanIssueCredit() {
-        return canIssueCredit;
-    }
-
-    public void setCanIssueCredit(Boolean canIssueCredit) {
-        this.canIssueCredit = canIssueCredit;
-    }
-
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
     }
 }

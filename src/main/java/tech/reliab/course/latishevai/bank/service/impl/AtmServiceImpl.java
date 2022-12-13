@@ -16,8 +16,12 @@ public class AtmServiceImpl implements AtmService {
                        Double money, Double maintenanceCost) {
         this.bankAtm = new BankAtm(id,name,bank,bankOffice,employee,status,
                 workDepositMoney,workIssuanceMoney,money,maintenanceCost);
-        bank.setCountATM(bank.getCountATM() + 1);
-        bankOffice.setCountATM(bankOffice.getCountATM() + 1);
+        BankServiceImpl bankService = new BankServiceImpl();
+        bankService.update(bank);
+        bankService.addBankAtm(this.bankAtm);
+        BankOfficeServiceImpl bankOfficeService = new BankOfficeServiceImpl();
+        bankOfficeService.update(bankOffice);
+        bankOfficeService.addBankAtm(this.bankAtm);
     }
 
     @Override
@@ -27,8 +31,6 @@ public class AtmServiceImpl implements AtmService {
 
     @Override
     public void delete() {
-        this.bankAtm.getBank().setCountATM(this.bankAtm.getBank().getCountATM()-1);
-        this.bankAtm.getBankOffice().setCountATM(this.bankAtm.getBankOffice().getCountATM()-1);
         this.bankAtm.setBank(null);
         this.bankAtm.setBankOffice(null);
         this.bankAtm.setEmployee(null);

@@ -13,4 +13,10 @@ public interface UserService {
     void update(User user);
     void delete();
     User getUser();
+    void addPaymentAccount(PaymentAccount paymentAccount);
+    void deletePaymentAccount(PaymentAccount paymentAccount);
+    PaymentAccount getPaymentAccount(Integer id);
+    void addCreditAccount(CreditAccount creditAccount);
+    void deleteCreditAccount(CreditAccount creditAccount);
+    CreditAccount getCreditAccount(Integer id);
 }

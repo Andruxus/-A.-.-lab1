@@ -1,14 +1,20 @@
 package tech.reliab.course.latishevai.bank.entity;
 
-import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
-public class User extends Person{
-    String job;
-    double salary;
-    Bank bank;
-    CreditAccount creditAccount;
-    PaymentAccount paymentAccount;
-    double creditRating;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+@Getter
+@Setter
+public class User extends Person {
+    private String job;
+    private double salary;
+    private Bank bank;
+    private ArrayList<PaymentAccount> paymentAccounts;
+    private ArrayList<CreditAccount> creditAccounts;
+    private double creditRating;
 
     public User(Integer id, String firstName, String lastName,
                 String patronymic, LocalDate birthDay, String job, double salary, Bank bank) {
@@ -16,8 +22,8 @@ public class User extends Person{
         this.job = job;
         this.salary = salary;
         this.bank = bank;
-        this.creditAccount = null;
-        this.paymentAccount = null;
+        this.creditAccounts = new ArrayList<>();
+        this.paymentAccounts = new ArrayList<>();
         this.creditRating = creditRating;
     }
 
@@ -30,57 +36,18 @@ public class User extends Person{
                 "место работы: " + job + '\n' +
                 "зарплата: " + salary + '\n' +
                 "банк: " + bank.getId() + '\n' +
-                "кредитный счет: " + creditAccount.getId() + '\n' +
-                "платежный счет: " + paymentAccount.getId() + '\n' +
                 "кредитный рейтинг: " + creditRating + '\n' +
                 '}';
     }
 
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
-
-    public CreditAccount getCreditAccount() {
-        return creditAccount;
-    }
-
-    public void setCreditAccount(CreditAccount creditAccount) {
-        this.creditAccount = creditAccount;
-    }
-
-    public PaymentAccount getPaymentAccount() {
-        return paymentAccount;
-    }
-
-    public void setPaymentAccount(PaymentAccount paymentAccount) {
-        this.paymentAccount = paymentAccount;
-    }
-
-    public double getCreditRating() {
-        return creditRating;
-    }
-
-    public void setCreditRating(double creditRating) {
-        this.creditRating = creditRating;
+    public void userInfo() {
+        System.out.println("Платежные счета пользователя " + getId());
+        for (PaymentAccount paymentAccount : getPaymentAccounts()) {
+            System.out.println(paymentAccount);
+        }
+        System.out.println("Кредитные счета пользователя " + getId());
+        for (CreditAccount creditAccount : getCreditAccounts()) {
+            System.out.println(creditAccount);
+        }
     }
 }

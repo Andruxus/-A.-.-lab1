@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18b67044-9fb9-4211-adf7-445e29431ee8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/AtmService.java" afterDir="false" />
+    <list default="true" id="18b67044-9fb9-4211-adf7-445e29431ee8" name="Changes" comment="123">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/Bank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/BankAtm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/BankAtm.java" afterDir="false" />
@@ -14,14 +14,30 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/CreditAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/PaymentAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/PaymentAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/AtmSevice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/BankOfficeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/BankOfficeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/BankService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/CreditAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/CreditAccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/PaymentAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/PaymentAccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/BankOfficeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/BankOfficeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/BankService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/AtmServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/AtmServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/BankOfficeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/BankOfficeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/BankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/BankServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/CreditAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/CreditAccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/PaymentAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/PaymentAccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tech/reliab/course/latishevai/bank/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/Bank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/BankAtm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/BankAtm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/BankOffice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/BankOffice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/CreditAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/CreditAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/PaymentAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/PaymentAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/service/BankService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/service/impl/BankServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/service/impl/CreditAccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tech/reliab/course/latishevai/bank/service/impl/CreditAccountServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +54,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -57,19 +78,19 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "configurable.group.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\latishevai\src\main\java\tech" />
@@ -123,8 +144,24 @@
       <workItem from="1670762300442" duration="4739000" />
       <workItem from="1670788340331" duration="1918000" />
       <workItem from="1670798515640" duration="1159000" />
-      <workItem from="1670805461712" duration="20906000" />
+      <workItem from="1670805461712" duration="28334000" />
+      <workItem from="1670921275677" duration="19302000" />
     </task>
+    <task id="LOCAL-00001" summary="123">
+      <created>1670858532462</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670858532462</updated>
+    </task>
+    <task id="LOCAL-00002" summary="123">
+      <created>1670858562315</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670858562315</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +177,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="123" />
+    <option name="LAST_COMMIT_MESSAGE" value="123" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -11,7 +11,9 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
     @Override
     public void create(Integer id, User user, Bank bank, double sum) {
         this.paymentAccount = new PaymentAccount(id, user, bank, sum);
-        user.setPaymentAccount(this.paymentAccount);
+        UserServiceImpl userService = new UserServiceImpl();
+        userService.update(user);
+        userService.addPaymentAccount(this.paymentAccount);
     }
 
     @Override
@@ -22,7 +24,6 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
     @Override
     public void delete() {
         this.paymentAccount.setBank(null);
-        this.paymentAccount.getUser().setPaymentAccount(null);
         this.paymentAccount.setUser(null);
         this.paymentAccount.setBank(null);
         this.paymentAccount.setSum(0);

@@ -15,7 +15,9 @@ public class EmployeeServiceImpl implements EmployeeService {
                        Boolean canIssueCredit, Double salary) {
         this.employee=new Employee(id, firstName, lastName, patronymic, birthDay,
                 bank, bankOffice, job, distantWork, canIssueCredit, salary);
-        bank.setCountEmployees(bank.getCountEmployees()+1);
+        BankServiceImpl bankService = new BankServiceImpl();
+        bankService.update(bank);
+        bankService.addEmployee(this.employee);
     }
 
     @Override
@@ -30,7 +32,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setLastName(null);
         employee.setPatronymic(null);
         employee.setBirthDay(null);
-        employee.getBank().setCountEmployees(employee.getBank().getCountEmployees()-1);
         employee.setBank(null);
         employee.setBankOffice(null);
         employee.setJob(null);

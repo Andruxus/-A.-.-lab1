@@ -19,7 +19,9 @@ public class CreditAccountServiceImpl implements CreditAccountService {
         this.creditAccount.setMonthNumber(p.getMonths()+p.getYears()*12);
         this.creditAccount.setInterestRate(bank.getInterestRate());
         this.creditAccount.setMonthPayment(sum/creditAccount.getMonthNumber()*(1+creditAccount.getInterestRate()/100));
-        user.setCreditAccount(this.creditAccount);
+        UserServiceImpl userService = new UserServiceImpl();
+        userService.update(user);
+        userService.addCreditAccount(this.creditAccount);
     }
 
     @Override
@@ -29,10 +31,9 @@ public class CreditAccountServiceImpl implements CreditAccountService {
 
     @Override
     public void delete() {
-        this.creditAccount.getUser().setCreditAccount(null);
         this.creditAccount.setId(null);
         this.creditAccount.setUser(null);
-        this.creditAccount.setBankName(null);
+        this.creditAccount.setBank(null);
         this.creditAccount.setStart(null);
         this.creditAccount.setEnd(null);
         this.creditAccount.setSum(0);

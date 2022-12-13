@@ -25,7 +25,9 @@ public class UserServiceImpl implements UserService {
         else{
             user.setCreditRating(random.nextDouble((int)Math.floor(salary/10),(int)Math.ceil(salary/10)));
         }
-        bank.setCountClients(bank.getCountClients()+1);
+        BankServiceImpl bankService = new BankServiceImpl();
+        bankService.update(bank);
+        bankService.addUser(this.user);
     }
 
     @Override
@@ -40,9 +42,8 @@ public class UserServiceImpl implements UserService {
         this.user.setLastName(null);
         this.user.setPatronymic(null);
         this.user.setBirthDay(null);
-        this.user.setPaymentAccount(null);
-        this.user.setCreditAccount(null);
-        this.user.getBank().setCountClients(this.user.getBank().getCountClients()-1);
+        this.user.setPaymentAccounts(null);
+        this.user.setCreditAccounts(null);
         this.user.setBank(null);
         this.user.setJob(null);
         this.user.setSalary(0);
@@ -52,5 +53,51 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUser() {
         return this.user;
+    }
+
+    @Override
+    public void addPaymentAccount(PaymentAccount paymentAccount) {
+        this.user.getPaymentAccounts().add(paymentAccount);
+        paymentAccount.setUser(this.user);
+    }
+
+    @Override
+    public void deletePaymentAccount(PaymentAccount paymentAccount) {
+        this.user.getPaymentAccounts().remove(paymentAccount);
+        PaymentAccountServiceImpl paymentAccountService = new PaymentAccountServiceImpl();
+        paymentAccountService.update(paymentAccount);
+        paymentAccountService.delete();
+    }
+
+    @Override
+    public PaymentAccount getPaymentAccount(Integer id) {
+        for (PaymentAccount paymentAccount : this.user.getPaymentAccounts()) {
+            if (id.equals(paymentAccount.getId()))
+                return paymentAccount;
+        }
+        return null;
+    }
+
+    @Override
+    public void addCreditAccount(CreditAccount creditAccount) {
+        this.user.getCreditAccounts().add(creditAccount);
+        creditAccount.setUser(this.user);
+    }
+
+    @Override
+    public void deleteCreditAccount(CreditAccount creditAccount) {
+        this.user.getPaymentAccounts().remove(creditAccount);
+        CreditAccountServiceImpl creditAccountService = new CreditAccountServiceImpl();
+        creditAccountService.update(creditAccount);
+        creditAccountService.delete();
+    }
+
+    @Override
+    public CreditAccount getCreditAccount(Integer id) {
+        for (CreditAccount creditAccount : this.user.getCreditAccounts()) {
+            if (id.equals(creditAccount.getId()))
+                return creditAccount;
+        }
+        return null;
     }
 }

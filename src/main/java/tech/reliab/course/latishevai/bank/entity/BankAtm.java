@@ -1,9 +1,11 @@
 package tech.reliab.course.latishevai.bank.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import tech.reliab.course.latishevai.bank.enums.StatusATM;
 
-import java.util.Formatter;
-
+@Getter
+@Setter
 public class BankAtm{
     private Integer id;
     private String name;
@@ -45,85 +47,5 @@ public class BankAtm{
                 "денег: " + money + '\n' +
                 "обслуживание: " + maintenanceCost + '\n' +
                 '}';
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
-
-    public BankOffice getBankOffice() {
-        return bankOffice;
-    }
-
-    public void setBankOffice(BankOffice bankOffice) {
-        this.bankOffice = bankOffice;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public StatusATM getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusATM status) {
-        this.status = status;
-    }
-
-    public boolean isWorkIssuanceMoney() {
-        return workIssuanceMoney;
-    }
-
-    public void setWorkIssuanceMoney(boolean workIssuanceMoney) {
-        this.workIssuanceMoney = workIssuanceMoney;
-    }
-
-    public boolean isWorkDepositMoney() {
-        return workDepositMoney;
-    }
-
-    public void setWorkDepositMoney(boolean workDepositMoney) {
-        this.workDepositMoney = workDepositMoney;
-    }
-
-    public Double getMoney() {
-        return money;
-    }
-
-    public void setMoney(Double money) {
-        this.money = money;
-    }
-
-    public Double getMaintenanceCost() {
-        return maintenanceCost;
-    }
-
-    public void setMaintenanceCost(Double maintenanceCost) {
-        this.maintenanceCost = maintenanceCost;
     }
 }

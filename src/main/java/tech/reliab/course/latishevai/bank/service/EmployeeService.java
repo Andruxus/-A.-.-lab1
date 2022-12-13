@@ -1,8 +1,6 @@
 package tech.reliab.course.latishevai.bank.service;
 
-import tech.reliab.course.latishevai.bank.entity.Bank;
-import tech.reliab.course.latishevai.bank.entity.BankOffice;
-import tech.reliab.course.latishevai.bank.entity.Employee;
+import tech.reliab.course.latishevai.bank.entity.*;
 
 import java.time.LocalDate;
 

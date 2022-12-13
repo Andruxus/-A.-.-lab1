@@ -1,10 +1,15 @@
 package tech.reliab.course.latishevai.bank.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class PaymentAccount {
-    Integer id;
-    User user;
-    Bank bank;
-    double sum = 0.0;
+    private Integer id;
+    private User user;
+    private Bank bank;
+    private double sum = 0.0;
 
     public PaymentAccount(Integer id, User user, Bank bank, double sum) {
         this.id = id;
@@ -21,37 +26,5 @@ public class PaymentAccount {
                 "наименование банка: " + bank.getName() + '\n' +
                 "сумма: " + sum + '\n' +
                 '}';
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
-
-    public double getSum() {
-        return sum;
-    }
-
-    public void setSum(double sum) {
-        this.sum = sum;
     }
 }
