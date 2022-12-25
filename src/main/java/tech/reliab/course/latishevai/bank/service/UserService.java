@@ -1,9 +1,7 @@
 package tech.reliab.course.latishevai.bank.service;
 
-import tech.reliab.course.latishevai.bank.entity.Bank;
-import tech.reliab.course.latishevai.bank.entity.CreditAccount;
-import tech.reliab.course.latishevai.bank.entity.PaymentAccount;
-import tech.reliab.course.latishevai.bank.entity.User;
+import tech.reliab.course.latishevai.bank.entity.*;
+import tech.reliab.course.latishevai.bank.service.exceptions.*;
 
 import java.time.LocalDate;
 
@@ -19,4 +17,8 @@ public interface UserService {
     void addCreditAccount(CreditAccount creditAccount);
     void deleteCreditAccount(CreditAccount creditAccount);
     CreditAccount getCreditAccount(Integer id);
+    void issueLoanBankService(BankService bank, BankOffice bankOffice, Employee employee, BankAtm bankATM, Double sumCredit,
+                              LocalDate startDate, Integer countMonths, PaymentAccountService paymentAccount,
+                              CreditAccountService creditAccount) throws CreditException, BadUserRatingException,
+            PayAccAnotherUserException, UserAnotherBankException, CreditAccAnotherUserException;
 }

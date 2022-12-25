@@ -3,6 +3,7 @@ package tech.reliab.course.latishevai.bank.service.impl;
 import tech.reliab.course.latishevai.bank.entity.Bank;
 import tech.reliab.course.latishevai.bank.entity.BankOffice;
 import tech.reliab.course.latishevai.bank.entity.Employee;
+import tech.reliab.course.latishevai.bank.service.BankOfficeService;
 import tech.reliab.course.latishevai.bank.service.EmployeeService;
 
 import java.time.LocalDate;
@@ -18,6 +19,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         BankServiceImpl bankService = new BankServiceImpl();
         bankService.update(bank);
         bankService.addEmployee(this.employee);
+        BankOfficeService office = new BankOfficeServiceImpl();
+        office.update(bankOffice);
+        office.addEmployee(this.employee);
     }
 
     @Override

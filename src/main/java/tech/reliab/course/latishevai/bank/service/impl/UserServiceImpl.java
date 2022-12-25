@@ -1,29 +1,30 @@
 package tech.reliab.course.latishevai.bank.service.impl;
 
-import tech.reliab.course.latishevai.bank.entity.Bank;
-import tech.reliab.course.latishevai.bank.entity.CreditAccount;
-import tech.reliab.course.latishevai.bank.entity.PaymentAccount;
-import tech.reliab.course.latishevai.bank.entity.User;
-import tech.reliab.course.latishevai.bank.service.UserService;
+import tech.reliab.course.latishevai.bank.entity.*;
+import tech.reliab.course.latishevai.bank.enums.StatusATM;
+import tech.reliab.course.latishevai.bank.enums.StatusOffice;
+import tech.reliab.course.latishevai.bank.service.*;
+import tech.reliab.course.latishevai.bank.service.exceptions.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Random;
 
 public class UserServiceImpl implements UserService {
     private User user = null;
+
     @Override
     public void create(Integer id, String firstName, String lastName,
                        String patronymic, LocalDate birthDay, String job, double salary,
                        Bank bank) {
-        this.user=new User(id, firstName, lastName, patronymic, birthDay,
+        this.user = new User(id, firstName, lastName, patronymic, birthDay,
                 job, salary, bank);
         Random random = new Random();
         user.setSalary(random.nextDouble(0, 10000));
-        if (salary>=9000) {
+        if (salary >= 9000) {
             user.setCreditRating(1000);
-        }
-        else{
-            user.setCreditRating(random.nextDouble((int)Math.floor(salary/10),(int)Math.ceil(salary/10)));
+        } else {
+            user.setCreditRating(random.nextDouble((int) Math.floor(salary / 10), (int) Math.ceil(salary / 10)));
         }
         BankServiceImpl bankService = new BankServiceImpl();
         bankService.update(bank);
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(User user) {
-        this.user=user;
+        this.user = user;
     }
 
     @Override
@@ -47,7 +48,7 @@ public class UserServiceImpl implements UserService {
         this.user.setBank(null);
         this.user.setJob(null);
         this.user.setSalary(0);
-        this.user=null;
+        this.user = null;
     }
 
     @Override
@@ -100,4 +101,44 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public void issueLoanBankService(BankService bank, BankOffice bankOffice, Employee employee,
+                                     BankAtm bankATM, Double sumCredit, LocalDate startDate,
+                                     Integer countMonths, PaymentAccountService paymentAccount,
+                                     CreditAccountService creditAccount) throws CreditException, BadUserRatingException,
+            PayAccAnotherUserException, UserAnotherBankException, CreditAccAnotherUserException {
+        if (this.user.getCreditRating() / 10 < bank.getBank().getRating()) {
+            throw new BadUserRatingException(bank.getBank().getRating(),
+                    this.user.getCreditRating() / 10);
+        }
+        if (bankOffice.getStatus() != StatusOffice.Work)
+            throw new CreditException("Выбранный офис не работает");
+        if (bankOffice.getMoney() < sumCredit)
+            throw new CreditException("В выбранном офисе недостаточно денег");
+        if (bankATM.getStatus() != StatusATM.WORKING)
+            throw new CreditException("Банкомат, в выбранном офисе, не работает");
+        if (bankATM.getMoney() < sumCredit)
+            throw new CreditException("В выбранном банкомате недостаточно денег");
+        if (!employee.getCanIssueCredit())
+            throw new CreditException("Выбранный сотрудник не может выдавать кредиты");
+
+        if (!bank.getBank().getUsers().contains(this.user)) {
+            paymentAccount.create(100, this.user, bank.getBank(), sumCredit);
+            this.addPaymentAccount(paymentAccount.getPaymentAccount());
+            bank.addUser(this.user);
+        } else {
+            for (int i = 0; i < this.user.getPaymentAccounts().size(); i++) {
+                if (Objects.equals(this.user.getPaymentAccounts().get(i).getBank().getId(), bank.getBank().getId())) {
+                    paymentAccount.update(this.user.getPaymentAccounts().get(i));
+                } else {
+                    paymentAccount.update(null);
+                }
+            }
+        }
+        creditAccount.create(100, this.user, bank.getBank(), startDate, startDate.plusMonths(countMonths),
+                sumCredit, employee, paymentAccount.getPaymentAccount());
+        this.addCreditAccount(creditAccount.getCreditAccount());
+    }
 }
+
