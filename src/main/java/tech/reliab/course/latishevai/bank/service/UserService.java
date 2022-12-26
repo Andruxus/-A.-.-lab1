@@ -19,6 +19,5 @@ public interface UserService {
     CreditAccount getCreditAccount(Integer id);
     void issueLoanBankService(BankService bank, BankOffice bankOffice, Employee employee, BankAtm bankATM, Double sumCredit,
                               LocalDate startDate, Integer countMonths, PaymentAccountService paymentAccount,
-                              CreditAccountService creditAccount) throws CreditException, BadUserRatingException,
-            PayAccAnotherUserException, UserAnotherBankException, CreditAccAnotherUserException;
+                              CreditAccountService creditAccount) throws CreditException, BadUserRatingException;
 }

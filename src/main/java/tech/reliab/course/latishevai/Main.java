@@ -23,7 +23,7 @@ public class Main {
         }
         return banksWithMoney;
     }
-    public static void main(String args[]) throws UserAnotherBankException, BadUserRatingException, CreditException, PayAccAnotherUserException, CreditAccAnotherUserException {
+    public static void main(String args[]) throws  BadUserRatingException, CreditException {
         ArrayList<BankService> banks = new ArrayList<>();
         //Инициализация 5 банков
         for (int i = 1; i <= 5; i++) {
