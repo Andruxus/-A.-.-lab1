@@ -3,6 +3,7 @@ package tech.reliab.course.latishevai.bank.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 @Getter
@@ -46,6 +47,7 @@ public class Bank {
     }
     @Override
     public String toString() {
+        DecimalFormat dF = new DecimalFormat("##.###");
         return "Bank{" +
                 "id: " + id + '\n' +
                 "Наименование банка: " + name + '\n' +
@@ -53,9 +55,9 @@ public class Bank {
                 "кол-во банкоматов: " + getBankAtms().size() + '\n' +
                 "кол-во сотрудников: " + getEmployees().size() + '\n' +
                 "кол-во клиентов: " + getUsers().size() + '\n' +
-                "рейтинг: " + rating + '\n' +
-                "денег: " + money + '\n' +
-                "ставка: " + interestRate + '\n' +
+                "рейтинг: " + dF.format(rating) + '\n' +
+                "денег: " + dF.format(money) + '\n' +
+                "ставка: " + dF.format(interestRate) + '\n' +
                 '}';
 
     }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import tech.reliab.course.latishevai.bank.enums.StatusOffice;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 @Getter
@@ -44,6 +45,7 @@ public class BankOffice {
 
     @Override
     public String toString() {
+        DecimalFormat dF = new DecimalFormat("##.###");
         return "BankOffice{" +
                 "id: " + id + '\n' +
                 "наименование: " + name + '\n' +
@@ -54,7 +56,7 @@ public class BankOffice {
                 "оформляет кредит: " + mayApplyLoan + '\n' +
                 "работает на прием денег: " + mayWithdrawMoney + '\n' +
                 "работает на выдачу денег: " + mayDepositMoney + '\n' +
-                "денег: " + money + '\n' +
+                "денег: " + dF.format(money) + '\n' +
                 "аренда: " + rentCost + '\n' +
                 "банк: " + bank.getId() + '\n' +
                 '}';

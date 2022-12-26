@@ -3,6 +3,7 @@ package tech.reliab.course.latishevai.bank.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -29,14 +30,15 @@ public class User extends Person {
 
     @Override
     public String toString() {
+        DecimalFormat dF = new DecimalFormat("##.###");
         return "User{" +
                 "id: " + super.getId() + '\n' +
                 "ФИО: " + super.getFullName() + '\n' +
                 "дата рождения: " + super.getBirthDay() + '\n' +
                 "место работы: " + job + '\n' +
-                "зарплата: " + salary + '\n' +
+                "зарплата: " + dF.format(salary) + '\n' +
                 "банк: " + bank.getId() + '\n' +
-                "кредитный рейтинг: " + creditRating + '\n' +
+                "кредитный рейтинг: " + dF.format(creditRating) + '\n' +
                 '}';
     }
 

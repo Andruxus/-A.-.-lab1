@@ -3,6 +3,8 @@ package tech.reliab.course.latishevai.bank.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.text.DecimalFormat;
+
 @Getter
 @Setter
 public class PaymentAccount {
@@ -20,11 +22,12 @@ public class PaymentAccount {
 
     @Override
     public String toString() {
+        DecimalFormat dF = new DecimalFormat("##.###");
         return "PaymentAccount{" +
                 "id: " + id + '\n' +
                 "пользователь: " + user.getId() + '\n' +
                 "наименование банка: " + bank.getName() + '\n' +
-                "сумма: " + sum + '\n' +
+                "сумма: " + dF.format(sum) + '\n' +
                 '}';
     }
 }

@@ -3,6 +3,7 @@ package tech.reliab.course.latishevai.bank.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 @Getter
 @Setter
@@ -34,6 +35,7 @@ public class CreditAccount {
 
     @Override
     public String toString() {
+        DecimalFormat dF = new DecimalFormat("##.###");
         return "CreditAccount{" +
                 "id: " + id + '\n' +
                 "пользователь: " + user.getId() + '\n' +
@@ -41,9 +43,9 @@ public class CreditAccount {
                 "начало кредита: " + start + '\n' +
                 "конец кредита: " + end + '\n' +
                 "кол-во месяцев кредита: " + monthNumber + '\n' +
-                "сумма кредита: " + sum + '\n' +
-                "ежемесячный платеж: " + monthPayment + '\n' +
-                "процентная ставка: " + interestRate + '\n' +
+                "сумма кредита: " + dF.format(sum) + '\n' +
+                "ежемесячный платеж: " + dF.format(monthPayment) + '\n' +
+                "процентная ставка: " + dF.format(interestRate) + '\n' +
                 "сотрудник: " + employee.getId() + '\n' +
                 "платежный счет: " + paymentAccount.getId() + '\n' +
                 '}';

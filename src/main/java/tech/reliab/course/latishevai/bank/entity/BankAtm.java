@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import tech.reliab.course.latishevai.bank.enums.StatusATM;
 
+import java.text.DecimalFormat;
+
 @Getter
 @Setter
 public class BankAtm{
@@ -35,6 +37,7 @@ public class BankAtm{
 
     @Override
     public String toString() {
+        DecimalFormat dF = new DecimalFormat("##.###");
         return "BankAtm{" +
                 "id: " + id + '\n' +
                 "имя банкомата: " + name + '\n' +
@@ -44,7 +47,7 @@ public class BankAtm{
                 "статус: " + status + '\n' +
                 "работает на выдачу: " + workIssuanceMoney + '\n' +
                 "можно внести деньги: " + workDepositMoney + '\n' +
-                "денег: " + money + '\n' +
+                "денег: " + dF.format(money) + '\n' +
                 "обслуживание: " + maintenanceCost + '\n' +
                 '}';
     }

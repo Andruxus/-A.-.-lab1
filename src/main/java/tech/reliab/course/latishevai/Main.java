@@ -1,5 +1,9 @@
 package tech.reliab.course.latishevai;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import tech.reliab.course.latishevai.bank.entity.*;
 import tech.reliab.course.latishevai.bank.enums.StatusATM;
 import tech.reliab.course.latishevai.bank.enums.StatusOffice;
@@ -7,9 +11,13 @@ import tech.reliab.course.latishevai.bank.service.*;
 import tech.reliab.course.latishevai.bank.service.exceptions.*;
 import tech.reliab.course.latishevai.bank.service.impl.*;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -23,6 +31,67 @@ public class Main {
         }
         return banksWithMoney;
     }
+
+    static void createJsonFromUsersBank(Bank bank){
+        JSONObject json = new JSONObject();
+        JSONArray ar = new JSONArray();
+        DecimalFormat dF = new DecimalFormat("##.###");
+        for (User user : bank.getUsers()){
+            for (PaymentAccount paymentAccount: user.getPaymentAccounts()) {
+                JSONObject jsonPayment = new JSONObject();
+                jsonPayment.put("id", paymentAccount.getId().intValue());
+                jsonPayment.put("user", paymentAccount.getUser().getId());
+                jsonPayment.put("Bank", paymentAccount.getBank().getId());
+                jsonPayment.put("sum", dF.format(paymentAccount.getSum()));
+                jsonPayment.put("type", "paymentAccount");
+                ar.put(jsonPayment);
+            }
+            for(CreditAccount creditAccount : user.getCreditAccounts()){
+                JSONObject jsonCredit = new JSONObject();
+                jsonCredit.put("id",creditAccount.getId());
+                jsonCredit.put("user",creditAccount.getUser().getId());
+                jsonCredit.put("bank",creditAccount.getBank().getId());
+                jsonCredit.put("start",creditAccount.getStart());
+                jsonCredit.put("end",creditAccount.getEnd());
+                jsonCredit.put("monthNumber",creditAccount.getMonthNumber());
+                jsonCredit.put("sum", dF.format(creditAccount.getSum()));
+                jsonCredit.put("monthPayment", dF.format(creditAccount.getMonthPayment()));
+                jsonCredit.put("interestRate", dF.format(creditAccount.getInterestRate()));
+                jsonCredit.put("employee",creditAccount.getEmployee().getId());
+                jsonCredit.put("type", "paymentAccount");
+                ar.put(jsonCredit);
+            }
+            json.put("acc",ar);
+        }
+        try (PrintWriter out = new PrintWriter(new FileWriter("D:\\file.json"))) {
+            out.write(json.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(json.toString());
+    }
+
+    static void updatePaymentAcc(PaymentAccount paymentAccount,String json, User user) throws ParseException {
+        JSONParser parser = new JSONParser();
+        Object obj = parser.parse(json);
+        JSONObject jsonObj = (JSONObject) obj;
+        paymentAccount.setId((Integer) jsonObj.get("id"));
+        paymentAccount.setSum((Double) jsonObj.get("sum"));
+        paymentAccount.setBank(user.getBank());
+    }
+    static void updateCreditAcc(CreditAccount creditAccount, String json, User user) throws ParseException {
+        JSONParser parser = new JSONParser();
+        Object obj = parser.parse(json);
+        JSONObject jsonObj = (JSONObject) obj;
+        creditAccount.setId((Integer) jsonObj.get("id"));
+        creditAccount.setStart((LocalDate) jsonObj.get("start"));
+        creditAccount.setSum((Double) jsonObj.get("sum"));
+        creditAccount.setEnd((LocalDate) jsonObj.get("end"));
+        creditAccount.setInterestRate((Double) jsonObj.get("interestRate"));
+        creditAccount.setMonthPayment((Double) jsonObj.get("monthPayment"));
+        creditAccount.setMonthNumber((Integer) jsonObj.get("monthNumber"));
+    }
+
     public static void main(String args[]) throws UserAnotherBankException, BadUserRatingException, CreditException, PayAccAnotherUserException, CreditAccAnotherUserException {
         ArrayList<BankService> banks = new ArrayList<>();
         //Инициализация 5 банков
@@ -58,7 +127,7 @@ public class Main {
             for (int i = 1; i <= 5; i++) {
                 UserServiceImpl user = new UserServiceImpl();
                 user.create(1, "Petrov", "Petrov", "Petrov",
-                        LocalDate.of(1999, 12, 12), "rab", 3232.3, banks.get(1).getBank());
+                        LocalDate.of(1999, 12, 12), "rab", 3232.3, banks.get(new Random().nextInt(0,3)).getBank());
                 for (int k = 2; k <= 2; k++) {
                     PaymentAccountServiceImpl paymentAccountUserFirstBank1 = new PaymentAccountServiceImpl();
                     paymentAccountUserFirstBank1.create(1, user.getUser(), bankService.getBank(), 2324.0);
@@ -69,71 +138,6 @@ public class Main {
                 }
             }
         }
-
-
-
-        System.out.println("Клиент");
-        User workUser = banks.get(1).getUser(1);
-        System.out.println(workUser);
-        System.out.println("\nПопытка получения нового кредита");
-        Scanner input = new Scanner(System.in);
-        System.out.println("Введите сумму кредита: ");
-        double loanSum = input.nextDouble();
-        System.out.println("Введите количество месяцев: ");
-        int countMonth = input.nextInt();
-        ArrayList<BankService> banksWithMoney = banksWithMoney(banks, loanSum);
-        System.out.println("\nПредложенные банки:");
-        for (int i = 0; i < banksWithMoney.size(); i++) {
-            if (i != 0) {
-                System.out.printf("\nБанк №%d%n", i+1);
-            }
-            else {
-                System.out.printf("Банк №%d%n", i+1);
-            }
-            System.out.println(banksWithMoney.get(i).getBank());
-        }
-        System.out.println("\nВыберите из предложенных банков: ");
-        int bankID = input.nextInt();
-        BankService workBank = banksWithMoney.get(bankID );
-
-        System.out.println("\nПредложенные банковские офисы:");
-        for (int i = 0; i < workBank.getBank().getBankOffices().size(); i++) {
-            if (i != 0) {
-                System.out.printf("\nОфис №%d%n", i+1);
-            }
-            else {
-                System.out.printf("Офис №%d%n", i+1);
-            }
-            System.out.println(workBank.getBank().getBankOffices().get(i));
-        }
-        System.out.println("\nВыберите из предложенных офисов: ");
-        int officeID = input.nextInt();
-        BankOffice workOffice = workBank.getBank().getBankOffices().get(officeID);
-        System.out.println(workOffice.getEmployees());
-        for (int i = 0; i < workOffice.getEmployees().size(); i++) {
-                System.out.printf("\nСотрудник №%d%n", i+1);
-                System.out.printf("Сотрудник №%d%n", i+1);
-            System.out.printf("id %d%n", workOffice.getEmployees().get(i).getId());
-            System.out.printf("Имя %s", workOffice.getEmployees().get(i).getFirstName());
-            if (workOffice.getEmployees().get(i).getCanIssueCredit()) {
-                System.out.println("\nМожет выдавать кредиты");
-            }
-            else {
-                System.out.println("\nНе может выдавать кредиты");
-            }
-        }
-        System.out.println("\nВыберите из предложенных сотрудников: ");
-        int employeeID = input.nextInt();
-        Employee workEmployee = workOffice.getEmployees().get(employeeID-1);
-        //Берём кредит
-        PaymentAccountServiceImpl payAcc = new PaymentAccountServiceImpl();
-        CreditAccountServiceImpl creditAcc = new CreditAccountServiceImpl();
-        UserService userService = new UserServiceImpl();
-        userService.update(workUser);
-        userService.issueLoanBankService(workBank, workOffice, workEmployee, workOffice.getBankAtms().get(0), loanSum,
-                LocalDate.of(2022, 11, 11), countMonth, payAcc, creditAcc);
-        System.out.println("Кредит успешно оформлен.");
-        int size = userService.getUser().getCreditAccounts().size();
-        System.out.println(userService.getUser().getCreditAccounts().get(size - 1));
+        createJsonFromUsersBank(banks.get(1).getBank());
     }
 }
