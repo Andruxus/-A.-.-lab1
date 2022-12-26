@@ -106,8 +106,8 @@ public class UserServiceImpl implements UserService {
     public void issueLoanBankService(BankService bank, BankOffice bankOffice, Employee employee,
                                      BankAtm bankATM, Double sumCredit, LocalDate startDate,
                                      Integer countMonths, PaymentAccountService paymentAccount,
-                                     CreditAccountService creditAccount) throws CreditException, BadUserRatingException,
-            PayAccAnotherUserException, UserAnotherBankException, CreditAccAnotherUserException {
+                                     CreditAccountService creditAccount) throws CreditException, BadUserRatingException
+           {
         if (this.user.getCreditRating() / 10 < bank.getBank().getRating()) {
             throw new BadUserRatingException(bank.getBank().getRating(),
                     this.user.getCreditRating() / 10);
